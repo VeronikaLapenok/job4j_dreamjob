@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @ThreadSafe
@@ -16,7 +17,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class MemoryCandidateRepository implements CandidateRepository {
     @GuardedBy("this")
     private final AtomicInteger nextId = new AtomicInteger(1);
-    private final HashMap<Integer, Candidate> candidates = new HashMap<>();
+    private final ConcurrentHashMap<Integer, Candidate> candidates = new ConcurrentHashMap<>();
 
     private MemoryCandidateRepository() {
         save(new Candidate(0, "Mikhailov A.V.", "junior",
