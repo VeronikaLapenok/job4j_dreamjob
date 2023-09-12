@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.job4j.dreamjob.model.User;
 import ru.job4j.dreamjob.repository.UserRepository;
 
+import java.util.Collection;
 import java.util.Optional;
 
 @Service
@@ -24,5 +25,15 @@ public class SimpleUserService implements UserService {
     @Override
     public Optional<User> findByEmailAndPassword(String email, String password) {
         return userRepository.findByEmailAndPassword(email, password);
+    }
+
+    @Override
+    public boolean deleteById(int id) {
+        return userRepository.deleteById(id);
+    }
+
+    @Override
+    public Collection<User> findAll() {
+        return userRepository.findAll();
     }
 }

@@ -4,17 +4,14 @@ import java.util.Map;
 import java.util.Objects;
 
 public class User {
-    public static final Map<String, String> COLUMN_MAPPING = Map.of(
-            "id", "id",
-            "email", "email",
-            "name", "name",
-            "password", "password"
-    );
-
     private int id;
     private String email;
     private String name;
     private String password;
+
+    public User() {
+
+    }
 
     public User(int id, String email, String name, String password) {
         this.id = id;
